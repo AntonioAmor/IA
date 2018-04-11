@@ -1,0 +1,31 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; opcionalmente para comprobar que el algoritmo funciona para cualquier 
+;;; problema, hemos implentado el problema de búsqueda de las reglas de 
+;;; la hoja 1 de teoría, en el que queremos medir 0.4m con reglas de 1m y
+;;; 0.3m
+
+(defun f-h-reglas (state)
+  (abs (- (abs (- (first state) (* (second state) 0.3))) 0.39999998)))
+
+(defun f-goal-test-reglas (state)
+  (eql (abs (- (first state) (* (second state) 0.3))) 0.39999998))
+
+(setf *reglas*
+  (make-problem
+   :states NIL
+   :initial-state '(0 0)
+   :f-goal-test #'(lambda(state) (f-goal-test-reglas state))
+   :f-h #'(lambda(state) (f-h-reglas state))
+   :operators (list #'(lambda(state) (add-regla-1 state))
+                    #'(lambda(state) (add-regla-0.3 state)))))
+
+(defun add-regla-1 (state)
+  (list (make-action :name 'add-regla-1
+               :origin state
+               :final (list (+ 1 (first state)) (second state))
+               :cost 1)))
+(defun add-regla-0.3 (state)
+  (list (make-action :name 'add-regla-0.3
+               :origin state
+               :final (list (first state) (+ 1 (second state)))
+               :cost 0.3)))

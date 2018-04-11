@@ -1,0 +1,41 @@
+N-B: 88.46%
+38 04
+02 08
+
+Vecinos: 98%
+42 00
+01 09
+
+Parece que funciona mejor el método de vecinos próximos
+
+J48 está en trees, no en rules
+
+Arbol de decision(J48):90.38%
+38 04
+01 09
+
+Redes neuronales(Multilayer perceptron): 90.38%
+40 02
+03 07
+
+CON VARIABLES
+N-B: 90.38%
+38 04
+01 09
+
+Vecinos: 92%
+40 02
+02 08
+
+ARboles de decision: 80.72%
+38 04 
+06 04
+
+Redes neuronales: 90%
+40 02
+03 07
+
+
+Variables más importantes: Mg Ba Na Al
+El número de atributos escogidos influye de manera distinta en cada método,
+un número de atributos beneficia a algunos métodos mientras que a otros les perjudica.
